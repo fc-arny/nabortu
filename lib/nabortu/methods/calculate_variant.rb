@@ -13,16 +13,17 @@ module Nabortu
           input, output = hash.dup, hash.dup
 
           input.each do |key, _|
-            if input[key].is_a? String
-              if key.to_s.include? '@'
-                _key = ['@', key.to_s.gsub('@', '').camelize].join.to_sym
-                output.delete(key)
-                output[_key] = input[key]
-              end
-            elsif input[key].is_a?(Hash)
-              output[key] = camelize(input[key])
-            elsif input[key].is_a?(Array)
-              output[key] = input.delete(key).map{ |item| camelize(item) }
+            case input[key]
+              when String
+                if key.to_s.include? '@'
+                  _key = ['@', key.to_s.gsub('@', '').camelize].join.to_sym
+                  output.delete(key)
+                  output[_key] = input[key]
+                end
+              when Hash
+                output[key] = camelize(input[key])
+              when Array
+                output[key] = input.delete(key).map{ |item| camelize(item) }
             end
           end
 
