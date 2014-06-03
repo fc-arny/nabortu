@@ -1,6 +1,6 @@
 module Nabortu
   module Methods
-    class CalculateVariant < Base
+    class CheckVariant < Base
       def request(params = {})
         offer   = params[:offer] || raise(Nabortu::Errors::NoParam.new :offer)
         request = params[:request] || raise(Nabortu::Errors::NoParam.new :request)

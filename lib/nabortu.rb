@@ -2,6 +2,7 @@ require 'nabortu/version'
 
 require 'active_support'
 require 'active_support/all'
+require 'support/hash'
 
 require 'nabortu/client'
 require 'nabortu/errors'
@@ -19,8 +20,8 @@ module Nabortu
       yield(config)
     end
 
-    def client(options = {})
-      Nabortu::Client.new options
+    def client
+      Nabortu::Client.new
     end
   end
 end

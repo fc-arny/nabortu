@@ -1,10 +1,8 @@
 module Nabortu
   module Methods
-    class GetDocumentTypes
-      class << self
-        def request(params = {})
-          {}
-        end
+    class GetDocumentTypes < Base
+      def request(params = {})
+        {}
       end
     end
   end
